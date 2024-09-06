@@ -41,7 +41,12 @@ namespace SysPecNSDesk
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            Frmlogin frmLogin = new();
+            //frmLogin.MdiParent = this;
+            frmLogin.ShowDialog();
+            Text += $" " +
+                $"({Program.UsuarioLogado.Email})"; 
+            toolStripStatusLabel1.Text = $"{Program.UsuarioLogado.Nome} - {Program.UsuarioLogado.Nivel.Nome}";
         }
 
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,6 +77,20 @@ namespace SysPecNSDesk
             FrmConsultaCliente frmConsultaCliente = new FrmConsultaCliente();
             frmConsultaCliente.MdiParent = this;
             frmConsultaCliente.Show();
+        }
+
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmProduto frmProduto = new FrmProduto();
+            frmProduto.MdiParent = this;
+            frmProduto.Show();
+        }
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmFornecedor frmFornecedor = new FrmFornecedor();
+            frmFornecedor.MdiParent = this;
+            frmFornecedor.Show();   
         }
     }
 }

@@ -149,7 +149,7 @@ namespace SysPecNSDesk
                 //Exibe ID do cliente no formulário, enquanto a caixa de diálogo não for fechada.
 
                 MessageBox.Show($"O endereço foi inserido com sucesso, no cadastro do usuário {endereco.Cliente.Nome}");
-                
+
                 txtCep.Clear();
                 txtLogradouro.Clear();
                 txtNumero.Clear();
@@ -210,6 +210,9 @@ namespace SysPecNSDesk
             //frmCliente.txtId.Text.Clear();
         }
 
-        
+        private void tabPageDadosCliente_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

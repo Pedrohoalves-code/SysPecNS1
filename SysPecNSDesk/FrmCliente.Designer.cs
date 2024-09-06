@@ -114,6 +114,7 @@
             tabPageDadosCliente.TabIndex = 0;
             tabPageDadosCliente.Text = "Dados do Cliente";
             tabPageDadosCliente.UseVisualStyleBackColor = true;
+            tabPageDadosCliente.Click += tabPageDadosCliente_Click;
             // 
             // btnCadastrarEnd
             // 

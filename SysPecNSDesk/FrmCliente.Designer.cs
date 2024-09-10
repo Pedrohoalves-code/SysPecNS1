@@ -220,6 +220,7 @@
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(166, 23);
             txtCpf.TabIndex = 2;
+            txtCpf.TextChanged += txtCpf_TextChanged;
             // 
             // txtNome
             // 

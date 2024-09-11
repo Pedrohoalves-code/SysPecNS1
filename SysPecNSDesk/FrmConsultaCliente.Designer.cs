@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             tabConsultaCliente = new TabControl();
             tabPageBuscar = new TabPage();
@@ -82,6 +82,7 @@
             tabPageBuscar.TabIndex = 0;
             tabPageBuscar.Text = "Buscar cliente";
             tabPageBuscar.UseVisualStyleBackColor = true;
+            tabPageBuscar.Click += tabPageBuscar_Click;
             // 
             // label7
             // 
@@ -109,14 +110,14 @@
             dgvClientes.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnCpf, clnTelefone, clnEmail, clnDataNasc, clnAtivo });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.Location = new Point(45, 59);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
@@ -124,6 +125,7 @@
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(666, 286);
             dgvClientes.TabIndex = 40;
+            dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             dgvClientes.CellContentDoubleClick += dgvClientes_CellContentDoubleClick;
             // 
             // clnId
@@ -167,9 +169,9 @@
             // 
             // clnDataNasc
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            clnDataNasc.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            clnDataNasc.DefaultCellStyle = dataGridViewCellStyle3;
             clnDataNasc.Frozen = true;
             clnDataNasc.HeaderText = "Data de Nascimento";
             clnDataNasc.Name = "clnDataNasc";

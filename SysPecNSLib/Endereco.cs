@@ -71,7 +71,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spuf", Uf);
             cmd.Parameters.AddWithValue("sptipo_endereco", Tipo_Endereco);
 
-            var dr = cmd.ExecuteReader();
+             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 Id = dr.GetInt32(0);

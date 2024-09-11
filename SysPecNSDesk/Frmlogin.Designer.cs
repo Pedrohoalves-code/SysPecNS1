@@ -81,6 +81,8 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(163, 23);
             txtEmail.TabIndex = 5;
+            txtEmail.Text = "pedro.henrique@gmail.com";
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // txtSenha
             // 
@@ -88,6 +90,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(163, 23);
             txtSenha.TabIndex = 6;
+            txtSenha.Text = "123456";
             txtSenha.UseSystemPasswordChar = true;
             // 
             // label3

@@ -13,6 +13,10 @@ namespace SysPecNSDesk
 {
     public partial class FrmPedidoNovo : Form
     {
+        public int ClienteId;
+        public string NomeCliente;
+
+        Produto produto;
         public FrmPedidoNovo()
         {
             InitializeComponent();
@@ -53,7 +57,49 @@ namespace SysPecNSDesk
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            ItemPedido item = new(
+                int.Parse(txtIdPedido.Text),
+                produto,
+                produto.ValorUnit,
+                double.Parse(txtQuantidade.Text),
+                double.Parse(txtDescontoItem.Text)
+                );
+            item.Inserir();
+            produto = new();
+            txtDescontoItem.Text = "";
+            txtDescricao.Clear();
+            txtValorUnit.Text = "0";
+            txtQuantidade.Text = "1";
+            txtCodBar.Clear();
+            txtCodBar.Focus();
 
+            PreencherGridItens();
+
+        }
+
+        private void PreencherGridItens()
+        {
+            var itens = ItemPedido.ObterListaPorPedido(int.Parse(txtIdPedido.Text));
+            dgvItensPedido.Rows.Clear();
+            int linha = 0;
+            double desconto = 0;
+            double total = 0;
+            foreach (var item in itens)
+            {
+                dgvItensPedido.Rows.Add();
+                dgvItensPedido.Rows[linha].Cells[0].Value = $"#{linha + 1}";
+                dgvItensPedido.Rows[linha].Cells[1].Value = item.Produto.CodBar;
+                dgvItensPedido.Rows[linha].Cells[2].Value = item.Produto.Descricao;
+                dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit.ToString("#0.00");
+                dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade.ToString("#0.000");
+                dgvItensPedido.Rows[linha].Cells[5].Value = item.Desconto.ToString("#0.00");
+                dgvItensPedido.Rows[linha].Cells[5].Value = (item.ValorUnit * item.Quantidade - item.Desconto).ToString("#0.00");
+                linha++;
+                total += item.ValorUnit * item.Quantidade - item.Desconto;
+                desconto += item.Desconto;
+            }
+            txtTotal1.Text = total.ToString("#0.00");
+            txtDescontoItens.Text = desconto.ToString("#0.00");
         }
 
         private void txtIdCliente_TextChanged(object sender, EventArgs e)
@@ -63,16 +109,66 @@ namespace SysPecNSDesk
 
         private void txtCodBar_Leave(object sender, EventArgs e)
         {
-            if (txtCodBar.Text.Length >0) 
+            if (txtCodBar.Text.Length > 0)
             {
-                var produto = Produto.ObterPorId(txtCodBar.Text);
+                produto = Produto.ObterPorId(txtCodBar.Text);
                 txtDescricao.Text = produto.Descricao;
                 txtValorUnit.Text = produto.ValorUnit.ToString();
+                if (produto.ClasseDesconto == 0)
+                {
+                    txtDescontoItens.Enabled = false;
+                }
+                else
+                {
+                    txtDescontoItens.Enabled = true;
+                    label15.Text += $"{produto.ValorUnit * produto.ClasseDesconto}";
+
+                }
                 txtValorUnit.ReadOnly = true;
                 txtQuantidade.Focus();
 
-            
+
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbItens_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbIntendificao_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCliente_TextChanged(object sender, EventArgs e)
+        {
+            txtUsuario.Text = Program.UsuarioLogado.Nome;
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            FrmBuscaCliente frmBuscaCliente = new ();
+            frmBuscaCliente.ShowDialog();
+
+            ClienteId = frmBuscaCliente.ClienteId;
+
+            //Associa o valor da propriedade da tabela de busca a variavel NomeCliente
+            NomeCliente = frmBuscaCliente.NomeCliente;
+
+            //Preenche os campos com as respectivas informações do cliente
+            txtIdCliente.Text = ClienteId.ToString();
+            txtCliente.Text = NomeCliente;
         }
     }
 }

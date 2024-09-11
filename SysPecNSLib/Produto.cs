@@ -12,7 +12,7 @@ namespace SysPecNSLib
         public int Id { get; set; }
         public string? CodBar { get; set; }
         public string? Descricao { get; set; }
-        public double? ValorUnit { get; set; }
+        public double ValorUnit { get; set; }
         public string? UnidadeVenda { get; set; }
         public Categoria? Categoria { get; set; }
         public double EstoqueMinimo { get; set; }
@@ -24,7 +24,7 @@ namespace SysPecNSLib
         {
         }
         //metodo construtor usado com procedure para inserir
-        public Produto(string? codBar, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
+        public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
         {
             CodBar = codBar;
             Descricao = descricao;
@@ -34,7 +34,7 @@ namespace SysPecNSLib
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
         }
-        public Produto(string? codBar, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem)
+        public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem)
         {
             CodBar = codBar;
             Descricao = descricao;
@@ -45,7 +45,7 @@ namespace SysPecNSLib
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
         }
-        public Produto(string? codBar, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime? datCad)
+        public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime? datCad)
         {
             CodBar = codBar;
             Descricao = descricao;
@@ -57,7 +57,7 @@ namespace SysPecNSLib
             Imagem = imagem;
             DatCad = datCad;
         }
-        public Produto(int id, string? codBar, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime? datCad)
+        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime? datCad)
         {
             Id = id;
             CodBar = codBar;

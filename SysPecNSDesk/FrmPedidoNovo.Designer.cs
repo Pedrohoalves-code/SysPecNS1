@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             grbIntendificao = new GroupBox();
+            btnCliente = new Button();
             btnInserePedido = new Button();
             txtCliente = new TextBox();
             txtIdCliente = new TextBox();
@@ -69,7 +70,6 @@
             clnTotalItem = new DataGridViewTextBoxColumn();
             label3 = new Label();
             label4 = new Label();
-            btnCliente = new Button();
             grbIntendificao.SuspendLayout();
             grbItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensPedido).BeginInit();
@@ -90,6 +90,16 @@
             grbIntendificao.TabStop = false;
             grbIntendificao.Text = "Indentificação";
             grbIntendificao.Enter += grbIntendificao_Enter;
+            // 
+            // btnCliente
+            // 
+            btnCliente.Location = new Point(6, 60);
+            btnCliente.Name = "btnCliente";
+            btnCliente.Size = new Size(71, 35);
+            btnCliente.TabIndex = 3;
+            btnCliente.Text = "Cliente";
+            btnCliente.UseVisualStyleBackColor = true;
+            btnCliente.Click += btnCliente_Click;
             // 
             // btnInserePedido
             // 
@@ -239,6 +249,7 @@
             txtDescontoPedido.Name = "txtDescontoPedido";
             txtDescontoPedido.Size = new Size(100, 23);
             txtDescontoPedido.TabIndex = 16;
+            txtDescontoPedido.TextChanged += txtDescontoPedido_TextChanged;
             // 
             // txtDescontoItens
             // 
@@ -375,6 +386,7 @@
             txtCodBar.Name = "txtCodBar";
             txtCodBar.Size = new Size(100, 23);
             txtCodBar.TabIndex = 0;
+            txtCodBar.TextChanged += txtCodBar_TextChanged;
             txtCodBar.Leave += txtCodBar_Leave;
             // 
             // txtDescricao
@@ -394,7 +406,7 @@
             dgvItensPedido.Name = "dgvItensPedido";
             dgvItensPedido.ReadOnly = true;
             dgvItensPedido.RowHeadersVisible = false;
-            dgvItensPedido.Size = new Size(620, 150);
+            dgvItensPedido.Size = new Size(628, 150);
             dgvItensPedido.TabIndex = 0;
             dgvItensPedido.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -452,7 +464,6 @@
             clnTotalItem.HeaderText = "Total";
             clnTotalItem.Name = "clnTotalItem";
             clnTotalItem.ReadOnly = true;
-            clnTotalItem.Width = 90;
             // 
             // label3
             // 
@@ -473,16 +484,6 @@
             label4.Size = new Size(151, 27);
             label4.TabIndex = 4;
             label4.Text = "Novo Pedido";
-            // 
-            // btnCliente
-            // 
-            btnCliente.Location = new Point(6, 60);
-            btnCliente.Name = "btnCliente";
-            btnCliente.Size = new Size(71, 35);
-            btnCliente.TabIndex = 3;
-            btnCliente.Text = "Cliente";
-            btnCliente.UseVisualStyleBackColor = true;
-            btnCliente.Click += btnCliente_Click;
             // 
             // FrmPedidoNovo
             // 
@@ -541,6 +542,8 @@
         private Label label12;
         private Label label11;
         private TextBox txtTotal1;
+        private Label label15;
+        private Button btnCliente;
         private DataGridViewTextBoxColumn clnSeg;
         private DataGridViewTextBoxColumn clnCodBar;
         private DataGridViewTextBoxColumn clnDescricao;
@@ -548,7 +551,5 @@
         private DataGridViewTextBoxColumn clnQuantidade;
         private DataGridViewTextBoxColumn clnDescontoItem;
         private DataGridViewTextBoxColumn clnTotalItem;
-        private Label label15;
-        private Button btnCliente;
     }
 }

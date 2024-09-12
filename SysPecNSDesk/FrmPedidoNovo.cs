@@ -14,6 +14,7 @@ namespace SysPecNSDesk
     public partial class FrmPedidoNovo : Form
     {
         public int ClienteId;
+
         public string NomeCliente;
 
         Produto produto;
@@ -93,13 +94,18 @@ namespace SysPecNSDesk
                 dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit.ToString("#0.00");
                 dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade.ToString("#0.000");
                 dgvItensPedido.Rows[linha].Cells[5].Value = item.Desconto.ToString("#0.00");
-                dgvItensPedido.Rows[linha].Cells[5].Value = (item.ValorUnit * item.Quantidade - item.Desconto).ToString("#0.00");
+                dgvItensPedido.Rows[linha].Cells[6].Value = (item.ValorUnit * item.Quantidade - item.Desconto).ToString("#0.00");
                 linha++;
                 total += item.ValorUnit * item.Quantidade - item.Desconto;
                 desconto += item.Desconto;
             }
-            txtTotal1.Text = total.ToString("#0.00");
+            txtTotal.Text = total.ToString("#0.00");
             txtDescontoItens.Text = desconto.ToString("#0.00");
+            //txtDescontoItens.Text = (desconto / );
+            txtSubTotal.Text = (total + desconto).ToString("#0.00");
+            txtTotal.Text = total.ToString("#0.00");
+
+            txtTotal1.Text = (desconto + total).ToString();
         }
 
         private void txtIdCliente_TextChanged(object sender, EventArgs e)
@@ -121,7 +127,7 @@ namespace SysPecNSDesk
                 else
                 {
                     txtDescontoItens.Enabled = true;
-                    label15.Text += $"{produto.ValorUnit * produto.ClasseDesconto}";
+                    label15.Text = "R$" + (produto.ValorUnit * produto.ClasseDesconto).ToString("#0.00");
 
                 }
                 txtValorUnit.ReadOnly = true;
@@ -158,7 +164,7 @@ namespace SysPecNSDesk
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            FrmBuscaCliente frmBuscaCliente = new ();
+            FrmBuscaCliente frmBuscaCliente = new();
             frmBuscaCliente.ShowDialog();
 
             ClienteId = frmBuscaCliente.ClienteId;
@@ -169,6 +175,16 @@ namespace SysPecNSDesk
             //Preenche os campos com as respectivas informações do cliente
             txtIdCliente.Text = ClienteId.ToString();
             txtCliente.Text = NomeCliente;
+        }
+
+        private void txtCodBar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescontoPedido_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

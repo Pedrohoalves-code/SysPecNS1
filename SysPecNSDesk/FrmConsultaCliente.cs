@@ -50,9 +50,42 @@ namespace SysPecNSDesk
                 cont++;
 
 
+            }            
+
+        }
+        private void (string nome = "")
+        {
+            //Obtem lista de clientes
+            var lista = Endereco.ObterLista(nome);
+
+            //Limpa as linhas da tabela antes de consultar as informações de cada campo
+            dgvEnderecos.Rows.Clear();
+            //contador para alterar o índice a cada cliente da lista
+            int cont = 0;
+            foreach (var endereco in lista)
+            {
+                //Adiciona uma nova linha a tabela
+                dgvEnderecos.Rows.Add();
+
+                //Preenche a linha com as colunas e seus respectivos dados
+                dgvEnderecos.Rows[cont].Cells[0].Value = endereco.Cep ;
+                dgvEnderecos.Rows[cont].Cells[1].Value = endereco.Logradouro;
+                dgvEnderecos.Rows[cont].Cells[2].Value = endereco.Numero;
+                dgvEnderecos.Rows[cont].Cells[3].Value = endereco.Complemento;
+                dgvEnderecos.Rows[cont].Cells[4].Value = endereco.Bairro;
+                dgvEnderecos.Rows[cont].Cells[5].Value = endereco.Cidade;
+                dgvEnderecos.Rows[cont].Cells[6].Value = endereco.Uf;
+                dgvEnderecos.Rows[cont].Cells[7].Value = endereco.Tipo_Endereco;
+
+                //Soma +1 ao contador de cliente
+                cont++;
+
+
             }
 
         }
+
+
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
@@ -87,6 +120,11 @@ namespace SysPecNSDesk
         }
 
         private void tabPageBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEnderecos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

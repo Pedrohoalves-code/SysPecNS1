@@ -65,6 +65,7 @@
             txtLogradouro = new TextBox();
             label8 = new Label();
             txtCep = new TextBox();
+            tabPageListarEndereços = new TabPage();
             groupBox1.SuspendLayout();
             tabCliente.SuspendLayout();
             tabPageDadosCliente.SuspendLayout();
@@ -86,7 +87,8 @@
             // 
             tabCliente.Controls.Add(tabPageDadosCliente);
             tabCliente.Controls.Add(tabPageEnderecos);
-            tabCliente.Location = new Point(11, 30);
+            tabCliente.Controls.Add(tabPageListarEndereços);
+            tabCliente.Location = new Point(11, 32);
             tabCliente.Name = "tabCliente";
             tabCliente.SelectedIndex = 0;
             tabCliente.Size = new Size(544, 335);
@@ -428,6 +430,16 @@
             txtCep.Size = new Size(127, 23);
             txtCep.TabIndex = 21;
             // 
+            // tabPageListarEndereços
+            // 
+            tabPageListarEndereços.Location = new Point(4, 24);
+            tabPageListarEndereços.Name = "tabPageListarEndereços";
+            tabPageListarEndereços.Padding = new Padding(3);
+            tabPageListarEndereços.Size = new Size(536, 307);
+            tabPageListarEndereços.TabIndex = 2;
+            tabPageListarEndereços.Text = "Lista de Endereços";
+            tabPageListarEndereços.UseVisualStyleBackColor = true;
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -485,5 +497,6 @@
         private Button btnSalvarEndereco;
         private Button btnAdicionarEndereco;
         private Button btnFechar;
+        private TabPage tabPageListarEndereços;
     }
 }

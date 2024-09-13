@@ -137,6 +137,7 @@
             dgvClientes.TabIndex = 40;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             dgvClientes.CellContentDoubleClick += dgvClientes_CellContentDoubleClick;
+            dgvClientes.SelectionChanged += dgvClientes_SelectionChanged;
             // 
             // clnId
             // 
@@ -219,6 +220,7 @@
             dgvEnderecos.Size = new Size(766, 231);
             dgvEnderecos.TabIndex = 41;
             dgvEnderecos.CellContentClick += dgvEnderecos_CellContentClick;
+            dgvEnderecos.SelectionChanged += dgvEnderecos_SelectionChanged;
             // 
             // clnCEP
             // 

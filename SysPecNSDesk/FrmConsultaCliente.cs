@@ -50,25 +50,25 @@ namespace SysPecNSDesk
                 cont++;
 
 
-            }            
+            }
 
         }
-        private void (string nome = "")
+        private void carregaGridEndereco(int clienteId)
         {
             //Obtem lista de clientes
-            var lista = Endereco.ObterLista(nome);
+            var ListaEndereco = Endereco.ObterListaPorCliente(clienteId);
 
             //Limpa as linhas da tabela antes de consultar as informações de cada campo
             dgvEnderecos.Rows.Clear();
             //contador para alterar o índice a cada cliente da lista
             int cont = 0;
-            foreach (var endereco in lista)
+            foreach (var endereco in ListaEndereco)
             {
                 //Adiciona uma nova linha a tabela
-                dgvEnderecos.Rows.Add();
+                int Rowindex = dgvEnderecos.Rows.Add();
 
                 //Preenche a linha com as colunas e seus respectivos dados
-                dgvEnderecos.Rows[cont].Cells[0].Value = endereco.Cep ;
+                dgvEnderecos.Rows[cont].Cells[0].Value = endereco.Cep;
                 dgvEnderecos.Rows[cont].Cells[1].Value = endereco.Logradouro;
                 dgvEnderecos.Rows[cont].Cells[2].Value = endereco.Numero;
                 dgvEnderecos.Rows[cont].Cells[3].Value = endereco.Complemento;
@@ -127,6 +127,19 @@ namespace SysPecNSDesk
         private void dgvEnderecos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvEnderecos_SelectionChanged(object sender, EventArgs e)
+        {
+
+           
+
+        }
+
+        private void dgvClientes_SelectionChanged(object sender, EventArgs e)
+        {
+            int clienteId = Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentRow.Index].Cells[0].Value);
+            carregaGridEndereco(clienteId);
         }
     }
 }
